@@ -30,7 +30,7 @@ fun main() {
 
     val key = 528476
 
-    val filePath = Path("C:\\Users\\CAGRI\\IdeaProjects\\Algorithms\\src\\main\\resources\\largeW.txt")
+    val filePath = Path("C:\\Users\\CAGRI\\IdeaProjects\\Algorithms\\src\\fundamentals.basicProgrammingModel.main\\resources\\largeW.txt")
     val scanner = Scanner(filePath)
     val list = Array(1_000_000) { 0 }
 

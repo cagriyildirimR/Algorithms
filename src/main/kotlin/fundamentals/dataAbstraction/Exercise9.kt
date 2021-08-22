@@ -27,7 +27,7 @@ private fun rank2(key: Int, a: Array<Int>): Int {  // Array must be sorted.
 }
 
 fun main(args: Array<String>) {
-    val filePath = File("C:\\Users\\CAGRI\\IdeaProjects\\Algorithms\\src\\main\\resources\\largeT.txt")
+    val filePath = File("C:\\Users\\CAGRI\\IdeaProjects\\Algorithms\\src\\fundamentals.basicProgrammingModel.main\\resources\\largeT.txt")
     val scanner = Scanner(filePath)
     val fileSize = 1_000_000
     val whitelist: Array<Int> = Array (fileSize) { 0 }
