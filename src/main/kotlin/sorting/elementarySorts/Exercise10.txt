@@ -1,0 +1,2 @@
+From website: Insertion sort is faster on inputs that are partially-sorted.
+

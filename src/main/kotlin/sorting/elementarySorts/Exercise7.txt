@@ -1,0 +1,3 @@
+Selection sort will run faster because it will use N^2/2 comparison operation and N / 2 exchange operation
+
+Insertion sort will use N^2 / 2 compare operation and N^2 / 2 exchange

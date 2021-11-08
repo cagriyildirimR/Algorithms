@@ -1,0 +1,6 @@
+Insertion sort will run faster because less(a[j], a[j-1]) returns false, there will be no exchange and it will run N-1
+comparison.
+exch = 0, comp = N - 1
+
+Selection sort also won't exchange elements but it will compare each element with remaining part of array
+exch = 0, comp = N^2/2

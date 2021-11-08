@@ -1,0 +1,7 @@
+This task in not possible without holding some value in memory, either count of cards
+or value of the card(If all cards are unique).
+
+We check first two cards. Compare them and largest one goes bottom of the deck also we register this value.
+We do this operation until we reach registered card. We have our initial registered card and smallest card in deck.
+We put the smallest card at bottom of the deck.
+Repeat the operation until we have a sorted deck.

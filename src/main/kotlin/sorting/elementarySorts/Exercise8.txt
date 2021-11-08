@@ -1,0 +1,6 @@
+a = [1,1,1,2,2,2,3,3,3]
+
+best case running time is linear
+
+in random order. it's quadratic.
+
