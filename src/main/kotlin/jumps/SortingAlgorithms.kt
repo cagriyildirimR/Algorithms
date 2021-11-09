@@ -37,11 +37,29 @@ fun <T : Comparable<T>> Array<T>.bubbleSort(): Array<T> {
 
     return this
 }
+fun <T: Comparable<T>> Array<T>.shellSort(): Array<T> {
+    val gapSequence = generateSequence(1) { it * 3 + 1 }
+    val gaps = gapSequence.takeWhile { it <= this.size }.toList().reversed().toTypedArray()
+
+    for (gap in gaps) {
+        for (i in gap until this.size) {
+            var j = i - gap
+
+            while (j >= 0 && this[j+gap] < this[j] ) {
+                this[j+gap] = this[j].also { this[j] = this[j+gap] }
+                j -= gap
+            }
+        }
+    }
+    return this
+}
+
 
 
 fun main() {
-    val bs = arrayOf(3, 5, 2, 7, 9, 0, 1)
+    val bs = arrayOf(3, 5, 2, 7, 9, 0, 1,-20,5,30, -30,1,100, 2, 56, 200, -52, 3, 99, 33, 177)
     val cs = arrayOf('t', 'b', 'q', 'l', 'a', 'y', 'n', 'z')
+    val ds = arrayOf(1,100, 2, 56, 200, -52, 3, 99, 33, 177)
     bs.selectionSort().toList().print()
     cs.selectionSort().toList().print()
 
@@ -50,4 +68,9 @@ fun main() {
 
     bs.bubbleSort().toList().print()
     cs.bubbleSort().toList().print()
+
+    bs.shellSort().toList().print()
+    cs.shellSort().toList().print()
+    ds.shellSort().toList().print()
+
 }
