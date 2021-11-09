@@ -1,1 +1,8 @@
 /src/main/kotlin/jumps/
+/.gradle/
+/.idea/
+/build/
+/gradlew
+/gradlew.bat
+/gradle.properities
+/gradle
