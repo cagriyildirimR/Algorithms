@@ -6,3 +6,5 @@
 /gradlew.bat
 /gradle.properities
 /gradle
+.DS_Store
+
