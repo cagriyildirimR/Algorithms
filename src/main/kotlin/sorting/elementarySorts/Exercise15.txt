@@ -1,1 +1,1 @@
-We need to know position of empty space (let's call it n) then search n-th largest crate then exchange that way we would only move crates N time
+We need to know position of empty space (let's call it n) then search n-th largest crate then exchange. We would only move crates N time
