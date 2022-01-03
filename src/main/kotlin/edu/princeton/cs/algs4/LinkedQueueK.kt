@@ -1,34 +1,51 @@
 package edu.princeton.cs.algs4
 
+import java.lang.Exception
+
 sealed class LinkedListK
 object Empty: LinkedListK() {
     override fun toString(): String {
         return "Empty"
     }
 }
-data class Node<Item>(val item: Item, val node: LinkedListK): LinkedListK()
+data class Node<Item>(val item: Item, var node: LinkedListK): LinkedListK()
 // data LinkedListK = Empty | Node a LinkedListK
 
-class LinkedListWithSealedClass<Item>(): Iterable<Item> {
-    var head: LinkedListK = Empty
+class LinkedQueueK<Item>(): Iterable<Item> {
+    var last: LinkedListK = Empty
+    var first: LinkedListK = Empty
     var size = 0
 
-    fun add(item: Item) {
-        head = when(head) {
+    fun enqueue(item: Item) {
+        when(first) {
             is Empty -> {
-                Node(item, Empty)
+                first = Node(item, Empty)
+                last = first
             }
             is Node<*> -> {
-                val newNode = Node(item, head)
-                newNode
+                val newNode = Node(item, Empty)
+                (last as Node<*>).node = newNode
+                last = newNode
             }
         }
         size++
     }
 
+    fun dequeue(): Item{
+        if (first == Empty) throw Exception("Linked List is empty")
+        val item = (first as Node<*>).item as Item
+        first = (first as Node<*>).node
+        --size
+        return item
+    }
+
+    fun isEmpty(): Boolean {
+        return size == 0
+    }
+
     override fun iterator(): Iterator<Item> {
         return object : Iterator<Item>{
-            var p: LinkedListK = head
+            var p: LinkedListK = first
 
             override fun hasNext(): Boolean {
                 return p != Empty
@@ -50,14 +67,4 @@ class LinkedListWithSealedClass<Item>(): Iterable<Item> {
         }
         return "head -> " + result + "Empty"
     }
-}
-
-fun main() {
-    val ll = LinkedListWithSealedClass<Int>()
-    for (i in 1..10) {
-        ll.add(i)
-    }
-
-    println(ll)
-    println(ll.head)
 }

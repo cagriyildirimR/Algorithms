@@ -1,6 +1,6 @@
 package fundamentals.stacksAndQueues
 
-import edu.princeton.cs.algs4.Queue
+import edu.princeton.cs.algs4.LinkedQueueK
 import java.util.*
 
 fun main() {
@@ -8,20 +8,16 @@ fun main() {
     val m = scanner.nextInt()
     val n = scanner.nextInt()
 
-    val queue = Queue<Int>()
+    val queue = LinkedQueueK<Int>()
 
-//    for (i in 0 until n){
-//        queue.enqueue(i)
-//    }
-//
-//    while (!queue.isEmpty) {
-//        for (j in 0 until m) {
-//            queue.enqueue(queue.dequeue())
-//        }
-//        println(queue.dequeue())
-//    }
+    for (i in 0 until n){
+        queue.enqueue(i)
+    }
 
-    queue.enqueue(m)
-    queue.enqueue(n)
-
+    while (!queue.isEmpty()) {
+        for (j in 0 until m-1) {
+            queue.enqueue(queue.dequeue())
+        }
+        println(queue.dequeue())
+    }
 }
