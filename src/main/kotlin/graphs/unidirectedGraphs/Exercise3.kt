@@ -4,17 +4,13 @@ import java.io.File
 import java.util.*
 
 class Graph(val file: File) {
+    val scanner = Scanner(file)
 
-    val numberOfVertices: Int
-    val numberOfEdges: Int
-    val adj: Array<MutableList<Int>>
+    val numberOfVertices: Int = scanner.nextInt()
+    val numberOfEdges: Int = scanner.nextInt()
+    val adj: Array<MutableList<Int>> = Array(numberOfVertices) { mutableListOf() }
 
     init {
-        val scanner = Scanner(file)
-        numberOfVertices = scanner.nextInt()
-        numberOfEdges = scanner.nextInt()
-        adj = Array(numberOfVertices) { mutableListOf() }
-
         for (i in 0 until numberOfEdges){
             val v = scanner.nextInt()
             val w = scanner.nextInt()
@@ -28,8 +24,8 @@ class Graph(val file: File) {
         adj[w].add(v)
     }
 
-    fun copy(graph: Graph): Graph {
-        return Graph(graph.file)
+    fun copy(): Graph {
+        return Graph(file)
     }
 
     override fun toString(): String {
@@ -41,4 +37,14 @@ class Graph(val file: File) {
         }
         return result
     }
+}
+
+fun main() {
+    val graph1 = Graph(File("src/datasets/tinyCG.txt"))
+    val graph2 = graph1.copy()
+    graph2.addEdge(0,3)
+    println("First Graph")
+    println(graph1)
+    println("Second Graph")
+    println(graph2)
 }
