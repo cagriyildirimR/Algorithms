@@ -15,52 +15,31 @@ import print
 data class ListNode(var `val`: Int, var next: ListNode? = null)
 class LinkedListSumTwo {
     fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
-
-        var r1 = l1
-        var r2 = l2
-
-        var r = 0
-
-        val l = ListNode(0)
-
-        var p = l
-
-        while (r1 != null || r2 != null) {
-            val x = r1?.`val` ?: 0
-            val y = r2?.`val` ?: 0
-
-            var z = x + y + r
-            r=0
-
-            println("$x $y is $z")
-
-            if (z >= 10) {
-                z %= 10
-                r = 1
-            }
-
-            p.`val` = z
-
-            if (r1 != null) {
-                r1 = r1.next
-            }
-            if (r2 != null) {
-                r2 = r2.next
-            }
-
-            if (r1 != null || r2 != null) {
-                p.next = ListNode(0)
-                p = p.next!!
+        var current1 = l1
+        var current2 = l2
+        var carry = 0
+        val dummyHead = ListNode(0)
+        var currentResultNode = dummyHead
+        while (current1 != null || current2 != null) {
+            val x = current1?.`val` ?: 0
+            val y = current2?.`val` ?: 0
+            val sum = x + y + carry
+            carry = if (sum >= 10) 1 else 0
+            currentResultNode.`val` = sum % 10
+            current1 = current1?.next
+            current2 = current2?.next
+            if (current1 != null || current2 != null) {
+                currentResultNode.next = ListNode(0)
+                currentResultNode = currentResultNode.next!!
             }
         }
-
-        if (r == 1) {
-            p.next = ListNode(1)
+        if (carry == 1) {
+            currentResultNode.next = ListNode(1)
         }
-
-        return l
+        return dummyHead
     }
 }
+
 
 fun main() {
     val r1 = ListNode(2)
