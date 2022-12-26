@@ -16,6 +16,7 @@ object GridTravel {
             if (n == 0L || m == 0L) return 0
             if (n == 1L && m == 1L) return 1
             memo[Pair(n,m)] = helper(n-1, m) + helper(n, m-1)
+            memo[Pair(m,n)] = memo[Pair(n,m)]!!
             return memo[Pair(n,m)]!!
         }
         return helper(n,m)
