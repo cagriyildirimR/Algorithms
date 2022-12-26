@@ -4,21 +4,30 @@ import org.junit.jupiter.api.Test
 
 
 private typealias Input = Int
-private typealias Want = Int
+private typealias Want = Long
 
-data class TestCase(val input: Input, val want: Want)
 class FibonacciTest {
+    data class TestCase(val input: Input, val run: Boolean = true, val want: Want)
+
     val tests = listOf<TestCase>(
-        TestCase(input = 1, want = 1),
-        TestCase(input = 3, want = 2),
-        TestCase(input = 5, want = 5),
-        TestCase(input = 6, want = 8),
-        )
+        TestCase(input = 1, want = 1L),
+        TestCase(input = 3, want = 2L),
+        TestCase(input = 5, want = 5L),
+        TestCase(input = 6, want = 8L),
+        TestCase(input = 50, run = false, want = 12_586_269_025L),
+    )
 
     @Test
-    fun fibonacciNaiveTest(){
+    fun fibonacciNaiveTest() {
         for (test in tests) {
-            assert(Fibonacci.fibonacciNaive(test.input)==test.want)
+            if (test.run) assert(Fibonacci.naiveFibonacci(test.input) == test.want)
+        }
+    }
+
+    @Test
+    fun memoFibonacciTest() {
+        for (test in tests) {
+            assert(Fibonacci.memoFibonacci(test.input) == test.want)
         }
     }
 }
